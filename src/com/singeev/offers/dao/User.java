@@ -1,9 +1,27 @@
 package com.singeev.offers.dao;
 
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
+
 public class User {
+
+	@NotBlank(message = "Username can't be blank!")
+	@Size(min = 5, max = 20, message = "Username should be between 5 and 20 characters!")
+	@Pattern(regexp = "^\\w{5,}$", message = "Username should contain only letters!")
 	private String username;
+
+	@NotBlank(message = "Password can't be blank!")
+	@Size(min = 5, max = 20, message = "Password should be between 5 and 20 characters!")
+	@Pattern(regexp = "^\\S+$", message = "Password should'n contain spaces!")
 	private String password;
+
+	@NotBlank(message = "E-mail can't be blank!")
+	@Email(message = "Looks like it's not a valid e-mail!")
 	private String email;
+
 	private boolean enabled = false;
 	private String authority;
 

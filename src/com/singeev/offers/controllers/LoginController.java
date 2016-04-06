@@ -3,6 +3,7 @@ package com.singeev.offers.controllers;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -32,11 +33,22 @@ public class LoginController {
 	@RequestMapping(value = "/createaccount", method = RequestMethod.POST)
 	public String createNewAccount(@Valid User user, BindingResult result) {
 		if (result.hasErrors()) {
-			return "createaccount";
+			return "newaccount";
 		}
 		user.setAuthority("user");
 		user.setEnabled(true);
-		service.create(user);
+
+		if (service.exists(user.getUsername())) {
+			result.rejectValue("username", "DuplicateKey.user.username", "This username is already taken!");
+			return "newaccount";
+		}
+
+		try {
+			service.create(user);
+		} catch (DuplicateKeyException e) {
+			result.rejectValue("username", "DuplicateKey.user.username", "This username is already taken!");
+			return "newaccount";
+		}
 		return "accountcreated";
 	}
 }
