@@ -9,7 +9,7 @@ import org.hibernate.validator.constraints.NotBlank;
 public class User {
 
 	@NotBlank(message = "Username can't be blank!")
-	@Size(min = 5, max = 20, message = "Username should be between 5 and 20 characters!")
+	@Size(min = 5, max = 20)
 	@Pattern(regexp = "^\\w{5,}$", message = "Username should contain only letters!")
 	private String username;
 

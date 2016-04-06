@@ -19,4 +19,13 @@
 	</bean>
 	<mvc:resources location="/webjars/" mapping="/webjars/**" />
 	<mvc:resources location="/resources/" mapping="/resources/**"></mvc:resources>
+	
+<!-- 	Messages resource file -->
+
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+	<property name="basename"
+		value="com.singeev.offers.messages.messages">
+	</property>
+	</bean>
 </beans>
