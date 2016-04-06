@@ -40,9 +40,10 @@
 			<label class="checkbox"><input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me</label>
 			<button class="btn btn-lg btn-primary btn-block" name="submit" type="submit">Login</button>
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+			<p align="center" style="margin-top: 5px; margin-bottom: 0px;">...or <a href="<c:url value="/newaccount"/>">click here to register</a>, if you're new!</p>
 		</form>
 		<c:if test="${param.error != null}">
-			<p align="center" color="red">Login failed! Check credentials!</p>
+			<p align="center" style="color: #D26232; font-weight: bold;">Login failed! Check credentials!</p>
 		</c:if>
 	</div>
 

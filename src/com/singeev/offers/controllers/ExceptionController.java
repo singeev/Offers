@@ -8,6 +8,7 @@ public class ExceptionController {
 
 	@ExceptionHandler(Exception.class)
 	public String handleException(Exception ex) {
+		ex.printStackTrace();
 		return "error";
 	}
 }

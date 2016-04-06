@@ -26,6 +26,9 @@
 		<security:intercept-url pattern="/offercrated" access="isAuthenticated()" />
 		<security:intercept-url pattern="/deleteoffer" access="isAuthenticated()" />
 		<security:intercept-url pattern="/" access="permitAll" />
+		<security:intercept-url pattern="/newaccount" access="permitAll" />
+		<security:intercept-url pattern="/createaccount" access="permitAll" />
+		<security:intercept-url pattern="/accountcreated" access="permitAll" />
 		<security:intercept-url pattern="/resources/**" access="permitAll" />
 		<security:intercept-url pattern="/webjars/**" access="permitAll" />
 		<security:intercept-url pattern="/login" access="permitAll" />
