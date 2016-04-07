@@ -1,21 +1,25 @@
 package com.singeev.offers.dao;
 
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 import com.singeev.offers.validation.MyEmailValidation;
 
 public class Offer {
 	private int id;
 
-	@Size(min = 4, max = 100, message = "Name should be between 4 and 100 characters!")
+	// validating error messages are in messages.properties file
+
+	@NotBlank
+	@Size(min = 4, max = 100)
 	private String name;
 
-	@NotNull
-	@MyEmailValidation(min = 6, message = "This e-mail address is not valid!")
+	@NotBlank
+	@MyEmailValidation(min = 6)
 	private String email;
 
-	@Size(min = 10, max = 255, message = "Text should be between 10 and 255 characters!")
+	@Size(min = 10, max = 255)
 	private String text;
 
 	public Offer() {

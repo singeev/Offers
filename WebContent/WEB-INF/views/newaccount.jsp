@@ -6,6 +6,33 @@
 <head>
 
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/main.css">
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/script/jquery-1.12.3.min.js"></script>
+
+<!-- Script to validate passwords -->
+
+<script type="text/javascript">
+function onload(){
+	$("#password").keyup(passwordConfirmation);
+	$("#confirmpass").keyup(passwordConfirmation);
+}
+
+function passwordConfirmation() {
+	var password = $("#password").val();
+	var confirmpass = $("#confirmpass").val();
+
+	if (password.length > 5 && confirmpass.length != 0) {
+		if (password == confirmpass) {
+			$("#passconf").text("Password confirmation: passwords match!").css('color', 'green')
+			$("#confbtn").prop("disabled", false);
+		} else {
+			$("#passconf").text("Password confirmation: passwords doesn't match!").css('color', 'red')
+			$("#confbtn").prop("disabled", true);
+		}
+	}
+}
+$(document).ready(onload);
+</script>
+
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Registration</title>
 <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css"
@@ -43,11 +70,11 @@
 				<sf:label path="email" style="margin-top: 10px;">E-mail:</sf:label><sf:errors path="email" cssClass="error"></sf:errors> 
 				<sf:input path="email" type="text" class="form-control" placeholder="Enter your e-mail..."/>
 				<sf:label path="password" style="margin-top: 10px;">Password:</sf:label><sf:errors path="password" cssClass="error"></sf:errors> 
-				<sf:input path="password" type="text" class="form-control" placeholder="Enter your password..."/>
-				<sf:label path="password" style="margin-top: 10px;">Confirm password:</sf:label> 
-				<input type="text" class="form-control" placeholder="Confirm your password..."/>
+				<sf:input path="password" id="password" type="text" class="form-control" placeholder="Enter your password..."/>
+				<sf:label path="password" id="passconf" style="margin-top: 10px;">Password confirmation:</sf:label>
+				<input id="confirmpass" type="text" class="form-control" placeholder="Confirm your password..."/>
 			</fieldset>
-			<button type="submit" class="btn btn-success">Register</button>
+			<button type="submit" id="confbtn" class="btn btn-success">Register</button>
 			<a class="btn btn-warning" href="${pageContext.request.contextPath}/">Cancel</a>
 		</sf:form>
 	</div>

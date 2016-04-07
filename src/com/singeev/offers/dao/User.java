@@ -8,18 +8,18 @@ import org.hibernate.validator.constraints.NotBlank;
 
 public class User {
 
-	@NotBlank(message = "Username can't be blank!")
+	// validating errors messages are in messages.properties file
+
 	@Size(min = 5, max = 20)
-	@Pattern(regexp = "^\\w{5,}$", message = "Username should contain only letters!")
+	@Pattern(regexp = "^\\w{5,}$")
 	private String username;
 
-	@NotBlank(message = "Password can't be blank!")
-	@Size(min = 5, max = 20, message = "Password should be between 5 and 20 characters!")
-	@Pattern(regexp = "^\\S+$", message = "Password should'n contain spaces!")
+	@Size(min = 5, max = 20)
+	@Pattern(regexp = "^\\S+$")
 	private String password;
 
-	@NotBlank(message = "E-mail can't be blank!")
-	@Email(message = "Looks like it's not a valid e-mail!")
+	@NotBlank
+	@Email
 	private String email;
 
 	private boolean enabled = false;

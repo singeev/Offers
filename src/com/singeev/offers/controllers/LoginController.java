@@ -38,15 +38,17 @@ public class LoginController {
 		user.setAuthority("user");
 		user.setEnabled(true);
 
+		// duplicateUserName error message is in messages.properties file
 		if (service.exists(user.getUsername())) {
-			result.rejectValue("username", "DuplicateKey.user.username", "This username is already taken!");
+			result.rejectValue("username", "DuplicateKey.user.username");
 			return "newaccount";
 		}
 
 		try {
 			service.create(user);
 		} catch (DuplicateKeyException e) {
-			result.rejectValue("username", "DuplicateKey.user.username", "This username is already taken!");
+			// duplicateUserName error message is in messages.properties file
+			result.rejectValue("username", "DuplicateKey.user.username");
 			return "newaccount";
 		}
 		return "accountcreated";
