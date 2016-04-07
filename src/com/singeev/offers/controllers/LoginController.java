@@ -1,5 +1,7 @@
 package com.singeev.offers.controllers;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,13 @@ public class LoginController {
 	@RequestMapping("/loggedout")
 	public String showLoggedOut() {
 		return "loggedout";
+	}
+
+	@RequestMapping("/admin")
+	public String showAdmin(Model model) {
+		List<User> users = service.getAllUsers();
+		model.addAttribute("users", users);
+		return "admin";
 	}
 
 	@RequestMapping("/newaccount")
