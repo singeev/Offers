@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Offer created</title>
+<title>Account created</title>
 <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
@@ -13,7 +13,7 @@
 	<%@ include file="common/navbar.jspf"%>
 <!--  end of navbar from JSPF -->
 
-<h1 align="center">New offer created!</h1>
+<h1 align="center">For authorised users only!</h1>
 
 
 <script src="webjars/jquery/1.9.1/jquery.min.js"></script>

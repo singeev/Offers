@@ -11,30 +11,10 @@
 	rel="stylesheet">
 </head>
 <body>
-	<!-- Navbar -->
-	<nav role="navigation" class="navbar navbar-default">
-	<div>
-		<a class="navbar-brand">MyPlace</a>
-	</div>
-	<div class="navbar-collapse">
-		<ul class="nav navbar-nav">
-			<li><a href="${pageContext.request.contextPath}/">Home</a></li>
-		</ul>
-		<ul class="nav navbar-nav">
-			<li><a href="${pageContext.request.contextPath}/offers">Offers</a></li>
-		</ul>
-		<ul class="nav navbar-nav navbar-right">
-			<li>
-				<form action="<c:url value="/logout" />" method="post">
-					<button type="submit" class="btn btn-link btn-lg" style="text-decoration: none; border:0px; height:50px;">Logout</button> 
-					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-				</form>
-			</li>
-		</ul>
-	</div>
-	</nav>
-	<!--  end of navbar -->
 
+<!-- Navbar from JSPF -->
+	<%@ include file="common/navbar.jspf"%>
+<!--  end of navbar from JSPF -->
 
 	<div>
 		<h1 align="center">You're on Home Page!</h1>

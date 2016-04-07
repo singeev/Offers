@@ -21,7 +21,7 @@ function passwordConfirmation() {
 	var password = $("#password").val();
 	var confirmpass = $("#confirmpass").val();
 
-	if (password.length > 5 && confirmpass.length != 0) {
+	if (password.length > 4 && confirmpass.length != 0) {
 		if (password == confirmpass) {
 			$("#passconf").text("<fmt:message key='MatchedPasswords.user.password' />").css('color', 'green')
 			$("#confbtn").prop("disabled", false);
@@ -42,29 +42,9 @@ $(document).ready(onload);
 </head>
 <body>
 
-	<!-- Navbar -->
-	<nav role="navigation" class="navbar navbar-default">
-	<div>
-		<a class="navbar-brand">My Place</a>
-	</div>
-	<div class="navbar-collapse">
-		<ul class="nav navbar-nav">
-			<li><a href="${pageContext.request.contextPath}/">Home</a></li>
-		</ul>
-		<ul class="nav navbar-nav">
-			<li><a href="${pageContext.request.contextPath}/offers">Offers</a></li>
-		</ul>
-		<ul class="nav navbar-nav navbar-right">
-			<li>
-				<form action="<c:url value="/logout" />" method="post">
-					<button type="submit" class="btn btn-link btn-lg" style="text-decoration: none; border:0px; height:50px;">Logout</button> 
-					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-				</form>
-			</li>
-		</ul>
-	</div>
-	</nav>
-	<!--  end of navbar -->
+<!-- Navbar from JSPF -->
+	<%@ include file="common/navbar.jspf"%>
+<!--  end of navbar from JSPF -->
 
 <!-- 	Bootstrap form -->
 <div class="container" id="newoffer">
