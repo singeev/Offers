@@ -11,36 +11,46 @@
 	rel="stylesheet">
 </head>
 <body>
-   <!-- Navbar -->
-<nav role="navigation" class="navbar navbar-default">
-    <div>
-        <a class="navbar-brand">MyPlace</a>
-    </div>
-    <div class="navbar-collapse">
-    <ul class="nav navbar-nav">
-            <li><a href="${pageContext.request.contextPath}/">Home</a></li>
-        </ul>
-        <ul class="nav navbar-nav">
-            <li><a href="${pageContext.request.contextPath}/offers">Offers</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href="">Logout</a></li>
-        </ul>
-    </div>
-</nav>
-<!--  end of navbar -->
+	<!-- Navbar -->
+	<nav role="navigation" class="navbar navbar-default">
+	<div>
+		<a class="navbar-brand">MyPlace</a>
+	</div>
+	<div class="navbar-collapse">
+		<ul class="nav navbar-nav">
+			<li><a href="${pageContext.request.contextPath}/">Home</a></li>
+		</ul>
+		<ul class="nav navbar-nav">
+			<li><a href="${pageContext.request.contextPath}/offers">Offers</a></li>
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+			<li>
+				<form action="<c:url value="/logout" />" method="post">
+					<button type="submit" class="btn btn-link btn-lg" style="text-decoration: none; border:0px; height:50px;">Logout</button> 
+					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+				</form>
+			</li>
+		</ul>
+	</div>
+	</nav>
+	<!--  end of navbar -->
 
 
 	<div>
 		<h1 align="center">You're on Home Page!</h1>
 		<div class="error-actions"
 			style="margin-top: 15px; margin-bottom: 15px;" align="center">
-			<a href="${pageContext.request.contextPath}/offers" class="btn btn-primary btn-lg" style="margin-right: 10px;"> Show All </a> 
-			<a href="${pageContext.request.contextPath}/createoffer" class="btn btn-default btn-lg"> Create New </a>
+			<a href="${pageContext.request.contextPath}/offers"
+				class="btn btn-primary btn-lg" style="margin-right: 10px;"> Show
+				All </a> <a href="${pageContext.request.contextPath}/createoffer"
+				class="btn btn-default btn-lg"> Create New </a>
 		</div>
-		<h3 align="center"><a href="${pageContext.request.contextPath}/error">Show me the error Page!</a></h1>
+		<h3 align="center">
+			<a href="${pageContext.request.contextPath}/error">Show me the
+				error Page!</a>
+			</h1>
 	</div>
-	
+
 
 
 	<script src="webjars/jquery/1.9.1/jquery.min.js"></script>

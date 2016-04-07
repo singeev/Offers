@@ -24,7 +24,12 @@
             <li><a href="${pageContext.request.contextPath}/offers">Offers</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="">Logout</a></li>
+            <li>
+				<form action="<c:url value="/logout" />" method="post">
+					<button type="submit" class="btn btn-link btn-lg" style="text-decoration: none; border:0px; height:50px;">Logout</button> 
+					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+				</form>
+			</li>
         </ul>
     </div>
 </nav>

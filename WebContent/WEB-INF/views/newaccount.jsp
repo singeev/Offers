@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -22,10 +23,10 @@ function passwordConfirmation() {
 
 	if (password.length > 5 && confirmpass.length != 0) {
 		if (password == confirmpass) {
-			$("#passconf").text("Password confirmation: passwords match!").css('color', 'green')
+			$("#passconf").text("<fmt:message key='MatchedPasswords.user.password' />").css('color', 'green')
 			$("#confbtn").prop("disabled", false);
 		} else {
-			$("#passconf").text("Password confirmation: passwords doesn't match!").css('color', 'red')
+			$("#passconf").text("<fmt:message key='UnmatchedPasswords.user.password' />").css('color', 'red')
 			$("#confbtn").prop("disabled", true);
 		}
 	}
@@ -54,7 +55,12 @@ $(document).ready(onload);
 			<li><a href="${pageContext.request.contextPath}/offers">Offers</a></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
-			<li><a href="">Logout</a></li>
+			<li>
+				<form action="<c:url value="/logout" />" method="post">
+					<button type="submit" class="btn btn-link btn-lg" style="text-decoration: none; border:0px; height:50px;">Logout</button> 
+					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+				</form>
+			</li>
 		</ul>
 	</div>
 	</nav>
@@ -71,7 +77,7 @@ $(document).ready(onload);
 				<sf:input path="email" type="text" class="form-control" placeholder="Enter your e-mail..."/>
 				<sf:label path="password" style="margin-top: 10px;">Password:</sf:label><sf:errors path="password" cssClass="error"></sf:errors> 
 				<sf:input path="password" id="password" type="text" class="form-control" placeholder="Enter your password..."/>
-				<sf:label path="password" id="passconf" style="margin-top: 10px;">Password confirmation:</sf:label>
+				<sf:label path="password" id="passconf" style="margin-top: 10px;">Confirm password:</sf:label>
 				<input id="confirmpass" type="text" class="form-control" placeholder="Confirm your password..."/>
 			</fieldset>
 			<button type="submit" id="confbtn" class="btn btn-success">Register</button>

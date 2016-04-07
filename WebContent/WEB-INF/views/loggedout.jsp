@@ -33,7 +33,7 @@
 </nav>
 <!--  end of navbar -->
 
-<h1 align="center">Your account has been created!</h1>
+<h1 align="center">You've just logout!</h1>
 
 
 <script src="webjars/jquery/1.9.1/jquery.min.js"></script>
