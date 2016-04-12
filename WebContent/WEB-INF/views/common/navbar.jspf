@@ -1,3 +1,13 @@
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/script/jquery-1.12.3.min.js"></script>
+<script>
+$('.menu li a').click(function(e) {
+	  var $this = $(this);
+	  if (!$this.hasClass('active')) {
+	    $this.addClass('active');
+	  }
+	  e.preventDefault();
+	});
+</script>
 <nav role="navigation" class="navbar navbar-default">
 	<div>
 		<a class="navbar-brand">MyPlace</a>

@@ -17,7 +17,7 @@
 			<h2 class="form-signin-heading">Please login</h2>
 			<input type="text" class="form-control" name="username" placeholder="Name" required="" autofocus="" /> 
 			<input type="password" class="form-control" name="password" placeholder="Password" required="" /> 
-			<label class="checkbox"><input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me</label>
+			<label style="margin-top: 5px;"><input type="checkbox" name="remember-me" checked="checked"> Remember me</label>
 			<button class="btn btn-lg btn-primary btn-block" name="submit" type="submit">Login</button>
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 			<p align="center" style="margin-top: 5px; margin-bottom: 0px;">...or <a href="<c:url value="/newaccount"/>">click here to register</a>, if you're new!</p>

@@ -10,7 +10,7 @@ public class ExceptionController {
 	@ExceptionHandler(AccessDeniedException.class)
 	public String accessException(AccessDeniedException ex) {
 		ex.printStackTrace();
-		return "login";
+		return "denied";
 	}
 
 	@ExceptionHandler(Exception.class)
