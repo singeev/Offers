@@ -3,8 +3,9 @@ package com.singeev.offers.dao;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
+
+import com.singeev.offers.validation.MyEmailValidation;
 
 public class User {
 
@@ -19,7 +20,7 @@ public class User {
 	private String password;
 
 	@NotBlank
-	@Email
+	@MyEmailValidation
 	private String email;
 
 	private boolean enabled = false;
