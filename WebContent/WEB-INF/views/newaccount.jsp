@@ -41,7 +41,9 @@ $(document).ready(onload);
 		<sf:form method="post" action="${pageContext.request.contextPath}/createaccount" commandName="user">
 			<fieldset class="form-group">
 				<sf:label path="username">Username:</sf:label><sf:errors path="username" cssClass="error"></sf:errors> 
-				<sf:input path="username" type="text" class="form-control" placeholder="Enter your name..."/>
+				<sf:input path="username" type="text" class="form-control" placeholder="Enter username..."/>
+				<sf:label path="name">Name:</sf:label><sf:errors path="name" cssClass="error"></sf:errors> 
+				<sf:input path="name" type="text" class="form-control" placeholder="Enter your name..."/>
 				<sf:label path="email" style="margin-top: 10px;">E-mail:</sf:label><sf:errors path="email" cssClass="error"></sf:errors> 
 				<sf:input path="email" type="text" class="form-control" placeholder="Enter your e-mail..."/>
 				<sf:label path="password" style="margin-top: 10px;">Password:</sf:label><sf:errors path="password" cssClass="error"></sf:errors> 

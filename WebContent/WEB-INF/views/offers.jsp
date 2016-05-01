@@ -21,8 +21,8 @@
 			<tbody>
 				<c:forEach items="${offers}" var="offer">
 					<tr>
-						<td>${offer.name}</td>
-						<td>${offer.email}</td>
+						<td>${offer.user.name}</td>
+						<td>${offer.user.email}</td>
 						<td>${offer.text}</td>
 						<td>
 							<a type="button" class="btn btn-primary" href="${pageContext.request.contextPath}/updateoffer?id=${offer.id}"><span class="glyphicon glyphicon-pencil"></span></a>

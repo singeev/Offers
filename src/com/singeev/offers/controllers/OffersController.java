@@ -1,5 +1,7 @@
 package com.singeev.offers.controllers;
 
+import java.security.Principal;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,10 +34,11 @@ public class OffersController {
 	}
 
 	@RequestMapping(value = "/docreate", method = RequestMethod.POST)
-	public String docreate(Model model, @Valid Offer offer, BindingResult result) {
+	public String docreate(Model model, @Valid Offer offer, BindingResult result, Principal principal) {
 		if (result.hasErrors()) {
 			return "createoffer";
 		}
+		offer.setUsername(principal.getName());
 		service.create(offer);
 		return "offercreated";
 	}

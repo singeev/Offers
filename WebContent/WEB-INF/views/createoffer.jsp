@@ -14,10 +14,6 @@
 		<h3>Creating a new offer:</h3>
 		<sf:form method="post" action="${pageContext.request.contextPath}/docreate" commandName="offer">
 			<fieldset class="form-group">
-				<sf:label path="name">Name:</sf:label><sf:errors path="name" cssClass="error"></sf:errors> 
-				<sf:input path="name" type="text" class="form-control" placeholder="Enter your name..."/>
-				<sf:label path="email" style="margin-top: 10px;">E-mail</sf:label><sf:errors path="email" cssClass="error"></sf:errors> 
-				<sf:input path="email" type="text" class="form-control" placeholder="Enter your e-mail..."/>
 				<sf:label path="text" style="margin-top: 10px;">Your offer:</sf:label><sf:errors path="text" cssClass="error"></sf:errors> 
 				<sf:input path="text" type="text" class="form-control" placeholder="Enter your offer..."/>
 			</fieldset>
