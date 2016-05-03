@@ -1,5 +1,9 @@
 package com.singeev.offers.dao;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -7,12 +11,16 @@ import org.hibernate.validator.constraints.NotBlank;
 
 import com.singeev.offers.validation.MyEmailValidation;
 
+@Entity
+@Table(name="users")
 public class User {
 
 	// validating errors messages are in messages.properties file
 
 	@Size(min = 5, max = 20)
 	@Pattern(regexp = "^\\w{5,}$")
+	@Id
+	@Column(name="username")
 	private String username;
 
 	@Size(min = 5, max = 20)

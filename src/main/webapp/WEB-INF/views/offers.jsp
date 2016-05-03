@@ -2,6 +2,21 @@
 
 <title>Offers</title>
 <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/script/jquery-1.12.3.min.js"></script>
+<script type="text/javascript">
+	function onDeleteClick(event) {
+		var doDelete = confirm("Are you sure you want to delete this offer?");
+		if(doDelete == false) {
+			event.preventDefault();
+		}
+	}
+
+	function onReady() {
+		$("#delete").click(onDeleteClick);
+	}
+
+	$(document).ready(onReady);
+</script>
 </head>
 <body>
 
@@ -26,7 +41,7 @@
 						<td>${offer.text}</td>
 						<td>
 							<a type="button" class="btn btn-primary" href="${pageContext.request.contextPath}/updateoffer?id=${offer.id}"><span class="glyphicon glyphicon-pencil"></span></a>
-							<a type="button" class="btn btn-danger" href="${pageContext.request.contextPath}/deleteoffer?id=${offer.id}"><span class="glyphicon glyphicon-trash"></span></a>
+							<a type="button" class="btn btn-danger" id="delete" href="${pageContext.request.contextPath}/deleteoffer?id=${offer.id}"><span class="glyphicon glyphicon-trash"></span></a>
 						</td>
 					</tr>
 				</c:forEach>
