@@ -28,27 +28,14 @@ public class OffersDao {
 
 	public List<Offer> getOffers() {
 
-		return jdbc.query("select * from offers, users where offers.username=users.username and users.enabled=true", new RowMapper<Offer>() {
+		return jdbc.query("select * from offers, users where offers.username=users.username and users.enabled=true", new OfferRowMapper());
+	}
 
-			public Offer mapRow(ResultSet rs, int rowNum) throws SQLException {
-				User user = new User();
+	public List<Offer> getOffers(String username) {
 
-				user.setAuthority(rs.getString("authority"));
-				user.setName(rs.getString("name"));
-				user.setUsername(rs.getString("username"));
-				user.setEmail(rs.getString("email"));
-				user.setEnabled(true);
-
-				Offer offer = new Offer();
-
-				offer.setId(rs.getInt("id"));
-				offer.setText(rs.getString("text"));
-				offer.setUser(user);
-
-				return offer;
-			}
-
-		});
+		return jdbc.query("select * from offers, users where offers.username=users.username and users.enabled=true and offers.username=:username",
+				new MapSqlParameterSource("username", username),
+				new OfferRowMapper());
 	}
 
 	public boolean update(Offer offer) {
@@ -84,27 +71,7 @@ public class OffersDao {
 		params.addValue("id", id);
 
 		return jdbc.queryForObject("select * from offers, users where offers.username=users.username and users.enabled=true and id=:id", params,
-				new RowMapper<Offer>() {
-
-					public Offer mapRow(ResultSet rs, int rowNum) throws SQLException {
-						User user = new User();
-
-						user.setAuthority(rs.getString("authority"));
-						user.setName(rs.getString("name"));
-						user.setUsername(rs.getString("username"));
-						user.setEmail(rs.getString("email"));
-						user.setEnabled(true);
-
-						Offer offer = new Offer();
-
-						offer.setId(rs.getInt("id"));
-						offer.setText(rs.getString("text"));
-						offer.setUser(user);
-
-						return offer;
-					}
-
-				});
+				new OfferRowMapper());
 	}
 
 	public boolean isExists(int id) {

@@ -20,7 +20,9 @@ import com.singeev.offers.dao.User;
 import com.singeev.offers.dao.UsersDao;
 
 @ActiveProfiles("dev")
-@ContextConfiguration(locations = { "classpath:dao-context.xml", "classpath:security-context.xml",
+@ContextConfiguration(locations = {
+		"classpath:dao-context.xml",
+		"classpath:security-context.xml",
 		"classpath:datasource.xml" })
 @RunWith(SpringJUnit4ClassRunner.class)
 public class UsersDaoTests {

@@ -22,7 +22,9 @@ import com.singeev.offers.dao.User;
 import com.singeev.offers.dao.UsersDao;
 
 @ActiveProfiles("dev")
-@ContextConfiguration(locations = { "classpath:dao-context.xml", "classpath:security-context.xml",
+@ContextConfiguration(locations = {
+		"classpath:dao-context.xml",
+		"classpath:security-context.xml",
 		"classpath:datasource.xml" })
 @RunWith(SpringJUnit4ClassRunner.class)
 public class OfferDaoTests {
@@ -47,7 +49,8 @@ public class OfferDaoTests {
 	@Test
 	public void testOffers() {
 
-		User user = new User("johnwpurcell", "John Purcell", "hellothere", "john@caveofprogramming.com", true, "user");
+		User user = new User("johnwpurcell", "John Purcell", "hellothere",
+				"john@caveofprogramming.com", true, "user");
 
 		assertTrue("User creation should return true", usersDao.create(user));
 
@@ -59,7 +62,8 @@ public class OfferDaoTests {
 
 		assertEquals("Should be one offer in database.", 1, offers.size());
 
-		assertEquals("Retrieved offer should match created offer.", offer, offers.get(0));
+		assertEquals("Retrieved offer should match created offer.", offer,
+				offers.get(0));
 
 		// Get the offer with ID filled in.
 		offer = offers.get(0);
@@ -69,13 +73,31 @@ public class OfferDaoTests {
 
 		Offer updated = offersDao.getOffer(offer.getId());
 
-		assertEquals("Updated offer should match retrieved updated offer", offer, updated);
+		assertEquals("Updated offer should match retrieved updated offer",
+				offer, updated);
 
+		// Test get by ID ///////
+		Offer offer2 = new Offer(user, "This is a test offer.");
+
+		assertTrue("Offer creation should return true", offersDao.create(offer2));
+
+		List<Offer> userOffers = offersDao.getOffers(user.getUsername());
+		assertEquals("Should be two offers for user.", 2, userOffers.size());
+
+		List<Offer> secondList = offersDao.getOffers();
+
+		for(Offer current: secondList) {
+			Offer retrieved = offersDao.getOffer(current.getId());
+
+			assertEquals("Offer by ID should match offer from list.", current, retrieved);
+		}
+
+		// Test deletion
 		offersDao.delete(offer.getId());
 
-		List<Offer> empty = offersDao.getOffers();
+		List<Offer> finalList = offersDao.getOffers();
 
-		assertEquals("Offers lists should be empty.", 0, empty.size());
+		assertEquals("Offers lists should contain one offer.", 1, finalList.size());
 	}
 
 }
